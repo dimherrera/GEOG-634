@@ -109,11 +109,9 @@ for i in range(3):
     axarr[i].imshow(concatenated[i,::-1,:], vmin=0, vmax=200, cmap='rainbow')
     axarr[i].title.set_text(titles[i])
     plt.tight_layout()
-
     
-# CDFs.
+# CDFs:
 plt.plot(cdf(finer_p[:,301,400]), color='red', label='Original')
-plt.plot(cdf(downscaled[:,301,400]), color='orange')
-plt.plot(cdf(target_p[:,301,400]), color='black')  
+plt.plot(cdf(downscaled[:,301,400]), color='orange', label='Downscaled')
+plt.plot(cdf(target_p[:,301,400]), color='black', label='Target data')  
 plt.legend()    
-    
