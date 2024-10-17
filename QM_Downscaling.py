@@ -102,6 +102,14 @@ concatenated = concatenated + mask
 
 
 # Step 10: plot your data
+# Step 10: plot your data
+# CDFs:
+plt.plot(cdf(finer_p[:,301,400]), color='red', label='Original')
+plt.plot(cdf(downscaled[:,301,400]), color='orange', label='Downscaled')
+plt.plot(cdf(target_p[:,301,400]), color='black', label='Target data')  
+plt.legend()  
+plt.savefig('~PATH/Figure_downscaling_cdf.png', dpi=200, bbox_inches='tight')
+
 # Maps
 titles = ['CRU interpolated', 'QM Downscaled', 'CHIRPS']
 fig, axarr = plt.subplots(3, figsize=(10, 10))
@@ -109,9 +117,4 @@ for i in range(3):
     axarr[i].imshow(concatenated[i,::-1,:], vmin=0, vmax=200, cmap='rainbow')
     axarr[i].title.set_text(titles[i])
     plt.tight_layout()
-    
-# CDFs:
-plt.plot(cdf(finer_p[:,301,400]), color='red', label='Original')
-plt.plot(cdf(downscaled[:,301,400]), color='orange', label='Downscaled')
-plt.plot(cdf(target_p[:,301,400]), color='black', label='Target data')  
-plt.legend()    
+    plt.savefig('~PATH/Figure_downscaling_map.png', dpi=200, bbox_inches='tight')
