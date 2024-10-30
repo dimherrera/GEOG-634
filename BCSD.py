@@ -122,6 +122,3 @@ for i in range(2):
     axarr[i].imshow(concatenated[i,::-1,:], vmin=0, vmax=200, cmap='rainbow')
     axarr[i].title.set_text(titles[i])
     plt.tight_layout()
-  
-
-    
