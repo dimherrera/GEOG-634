@@ -10,6 +10,18 @@ import xarray as xr
 import numpy as np
 import xesmf as xe
 import matplotlib.pyplot as plt
+import matplotlib as mpl
+import matplotlib.patches as patches
+import cartopy
+import cartopy.crs as ccrs
+from cartopy.geodesic import Geodesic
+import cartopy.feature as cf
+import shapely.geometry as sgeom
+import matplotlib.path as mpath
+import datetime
+import matplotlib.ticker as mticker
+import matplotlib.gridspec as gridspec
+
 
 # =============================================================================
 # Regrdding function
