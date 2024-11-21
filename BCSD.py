@@ -154,7 +154,7 @@ lonc = coarse.lon
 # CRU data
 #plt.imshow(coarse.pre[25,::-1,:], vmin=0, vmax=200, cmap='rainbow')
 #plt.title("CRU")
-plot_swath(coarser_p[25,70::,700::], lond[700::], latd[70::], "CRU")
+plot_swath(coarser_p[25,70::,700::], lonc[700::], latc[70::], "CRU")
 
 plot_swath(bcsd[25,70::,700::], lond[700::], latd[70::], "Downscaled CRU")
     # Original target and downscaled data
