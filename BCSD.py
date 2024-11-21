@@ -59,11 +59,11 @@ def plot_swath(data, lons, lats, title):
     lcc = ccrs.Mercator() 
     fig = plt.figure(figsize=(13,10))
     ax = fig.add_subplot(111, projection=lcc)
-    cax = ax.pcolor(lons, lats, data, transform=ccrs.PlateCarree(), cmap='RdYlGn_r')
+    cax = ax.pcolor(lons, lats, data, transform=ccrs.PlateCarree(), vmin=0.0, vmax=200, cmap='RdYlGn_r')
 
     ax.set_extent([-83.0, -67.0, 36.0, 48.0])
 
-    cbar = fig.colorbar(cax, ticks=[0.0, 20.0, 40.0, 60.0, 80.0, 100.0, 120.0, 140.0, 160.0, 180.0, 200.0, 220.0, 240.0, 260.0, 280.0, 300.0], orientation='vertical', extendfrac='auto', fraction=0.06, pad=0.02)
+    cbar = fig.colorbar(cax, ticks=[0.0, 20.0, 40.0, 60.0, 80.0, 100.0, 120.0, 140.0, 160.0, 180.0, 200.0], orientation='vertical', extendfrac='auto', fraction=0.06, pad=0.02)
     #cbar = fig.colorbar(cax, orientation='horizontal', extendfrac='auto', fraction=0.06, pad=0.02)
     #cbar = fig.colorbar(cax, ticks=[0.0, 2.0, 4.0, 6.0, 8.0, 10.0], orientation='horizontal', extendfrac='auto', fraction=0.06, pad=0.02)
 
