@@ -72,10 +72,10 @@ def plot_swath(data, lons, lats, title):
 
     ax.coastlines(resolution='50m', color='black')
     ax.add_feature(cf.BORDERS, linewidth=1.5, color='black')
-
+    ax.add_feature(cf.LAKES.with_scale('50m'), facecolor=cf.COLORS['water'])
     ax.add_feature(cf.STATES)
 
-    #plt.title(title,fontsize=17)
+    plt.title(title,fontsize=23)
 
     #plt.savefig('/Users/dimitrisherrera/Downloads/Figure_1.png', dpi=600) 
     
@@ -143,15 +143,26 @@ bcsd = np.array(scale_factors_target) + np.array(target_p)
 concatenated = np.concatenate((bcsd[25,:,:], target_p[25,:,:]))
 concatenated = np.reshape(concatenated, (2,560,1200))
 
-    # Plot your data
-        # CRU data
-plt.imshow(coarse.pre[25,::-1,:], vmin=0, vmax=200, cmap='rainbow')
-plt.title("CRU")
+# Plot your data
+# Lat and lon
+latd = target.latitude
+lond = target.longitude
 
+latc = coarse.lat
+lonc = coarse.lon
+
+# CRU data
+#plt.imshow(coarse.pre[25,::-1,:], vmin=0, vmax=200, cmap='rainbow')
+#plt.title("CRU")
+plot_swath(coarser_p[25,70::,700::], lond[700::], latd[70::], "CRU")
+
+plot_swath(bcsd[25,70::,700::], lond[700::], latd[70::], "Downscaled CRU")
     # Original target and downscaled data
-titles = ['BCSD Downscaled', 'CHIRPS']
-fig, axarr = plt.subplots(2, figsize=(7, 7))
-for i in range(2):
-    axarr[i].imshow(concatenated[i,::-1,:], vmin=0, vmax=200, cmap='rainbow')
-    axarr[i].title.set_text(titles[i])
-    plt.tight_layout()
+#titles = ['BCSD Downscaled', 'CHIRPS']
+#fig, axarr = plt.subplots(2, figsize=(7, 7))
+#for i in range(2):
+#    axarr[i].imshow(concatenated[i,::-1,:], vmin=0, vmax=200, cmap='rainbow')
+ #   axarr[i].title.set_text(titles[i])
+#    plt.tight_layout()
+
+
