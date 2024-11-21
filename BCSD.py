@@ -59,7 +59,7 @@ def plot_swath(data, lons, lats, title):
     lcc = ccrs.Mercator() 
     fig = plt.figure(figsize=(13,10))
     ax = fig.add_subplot(111, projection=lcc)
-    cax = ax.pcolor(lons, lats, data, transform=ccrs.PlateCarree(), cmap='RdYlGn')
+    cax = ax.pcolor(lons, lats, data, transform=ccrs.PlateCarree(), cmap='RdYlGn_r')
 
     ax.set_extent([-83.0, -67.0, 36.0, 48.0])
 
