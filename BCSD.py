@@ -47,7 +47,40 @@ def corrcdf(datasim,dataobs):
     #SATCDF = np.polynomial.polynomial.polyval(COEF,datasim) + datasim
     return Bias_corrected
 
+# =============================================================================
+#  Plotting function NE
+# =============================================================================
+
+def plot_swath(data, lons, lats, title):
+
+    plt.style.use('default')
+   # gd = Geodesic()
+   # src_crs = ccrs.PlateCarree()
+    lcc = ccrs.Mercator() 
+    fig = plt.figure(figsize=(13,10))
+    ax = fig.add_subplot(111, projection=lcc)
+    cax = ax.pcolor(lons, lats, data, transform=ccrs.PlateCarree(), cmap='rainbow')
+
+    ax.set_extent([-83.0, -67.0, 36.0, 48.0])
+
+    cbar = fig.colorbar(cax, ticks=[0.0, 20.0, 40.0, 60.0, 80.0, 100.0, 120.0, 140.0, 160.0, 180.0, 200.0, 220.0, 240.0, 260.0, 280.0, 300.0], orientation='vertical', extendfrac='auto', fraction=0.06, pad=0.02)
+    #cbar = fig.colorbar(cax, orientation='horizontal', extendfrac='auto', fraction=0.06, pad=0.02)
+    #cbar = fig.colorbar(cax, ticks=[0.0, 2.0, 4.0, 6.0, 8.0, 10.0], orientation='horizontal', extendfrac='auto', fraction=0.06, pad=0.02)
+
+    cbar.ax.tick_params(labelsize=17)
+    cbar.set_label('Precipitation', fontsize=20, labelpad=5)
+
+    ax.coastlines(resolution='50m', color='black')
+    ax.add_feature(cf.BORDERS, linewidth=1.5, color='black')
+
+    ax.add_feature(cf.STATES)
+
+    #plt.title(title,fontsize=17)
+
+    #plt.savefig('/Users/dimitrisherrera/Downloads/Figure_1.png', dpi=600) 
     
+    return(plt.show())
+
 # =============================================================================
 # Exercise
 # =============================================================================
